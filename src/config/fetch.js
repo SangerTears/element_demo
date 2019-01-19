@@ -58,9 +58,16 @@ export default async(url = '', data ={}, type="GET", method = "fetch") =>{
             requestObj.send(sendData);
 
             requestObj.onreadystatechange = ()=>{
-                
+                if (requestObj.readyState == 4) {
+                    let obj = requestObj.response
+                    if(typeof obj !== 'object') {
+                        obj = JSON.parse(obj);
+                    }
+                    resolve(obj)
+                } else {
+                    reject(requestObj)
+                }
             }
-
         })
     }
 }
