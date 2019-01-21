@@ -170,5 +170,12 @@ export const showBack = callback =>{
         callback = mode;
         mode = 'ease-out';
     }
+
+    //获取dom样式
+    const attrStyle = attr =>{
+        if(attr === 'opacity'){
+            return Math.round(getStyle)
+        }
+    } 
  }
     
